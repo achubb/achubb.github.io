@@ -12,4 +12,8 @@ function Level() {
 	this.obs3 = this.obstacles.push(new Obstacle(600));
 	this.obs4 = this.obstacles.push(new Obstacle(1000));
 
+	// Check when obstacle is passed (without registering a hit)
+	
+	
+
 }

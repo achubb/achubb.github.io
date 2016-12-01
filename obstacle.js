@@ -25,7 +25,7 @@ function Obstacle(distance) {
 	}
 
 	this.passed = function(person) {
-		if ((this.x + this.w) < person.pos.x) {
+		if ((this.x + this.w) === person.pos.x) {
 			return true		
 		}
 	}

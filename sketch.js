@@ -11,7 +11,9 @@ var person;
 
 //var obstacles = [];
 
-var score = []
+var hit = false;
+
+var score = 0;
 
 function setup() {
 	createCanvas(640, 360);
@@ -26,7 +28,6 @@ function setup() {
 	// 	score.push("hello" + i);
 	// }
 
-	console.log(score);
 }
 
 function keyPressed() {
@@ -49,12 +50,13 @@ function draw() {
 
   		if (level.obstacles[i].hits(person)) {
   			//console.log("HIT");
+  			hit = true;
   		}
 
   		if (level.obstacles[i].passed(person)) {
-  			console.log("passed!");
-  			score.push("hello" + i);
-  			console.log(score);
+  			if (!hit) {
+	  			score = score + 10;
+	  		}
   		}
 
   		if (level.obstacles[i].offscreen()) {
@@ -65,6 +67,12 @@ function draw() {
 	person.update();
 	person.edges();
 	person.display();
+
+	textSize(32);
+	fill(255, 255, 255);
+	noStroke();
+	text(score, 10, 60);
+
 
 	// if (frameCount % 100 == 0) {
 	// 	obstacles.push(new Obstacle());
