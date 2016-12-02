@@ -59,6 +59,11 @@ function draw() {
   		}
 	}
 
+	for (var i = level.platforms.length-1; i >= 0; i--) {
+		level.platforms[i].show();
+		level.platforms[i].update();
+	}
+
 	for (var i = level.coins.length-1; i >= 0; i--) {
 		level.coins[i].show();
 		level.coins[i].update();
