@@ -1,8 +1,3 @@
-// Daniel Shiffman
-// https://www.kadenze.com/courses/the-nature-of-code
-// http://natureofcode.com/
-// Session 2: Array of Particles, multiple forces
-
 var person;
 
 // var obs1;
@@ -12,6 +7,7 @@ var person;
 //var obstacles = [];
 
 var hit = false;
+var coinhit = false;
 
 var score = 0;
 
@@ -49,7 +45,6 @@ function draw() {
   		level.obstacles[i].update();
 
   		if (level.obstacles[i].hits(person)) {
-  			//console.log("HIT");
   			hit = true;
   		}
 
@@ -61,6 +56,26 @@ function draw() {
 
   		if (level.obstacles[i].offscreen()) {
   			level.obstacles.splice(i, 1);
+  		}
+	}
+
+	for (var i = level.coins.length-1; i >= 0; i--) {
+		level.coins[i].show();
+		level.coins[i].update();
+
+		if (level.coins[i].hits(person)) {
+  			console.log("HIT");
+  			coinhit = true;
+  			level.coins[i].floataway();
+
+		  			//score = score + 50;
+		}
+
+  		if (level.coins[i].passed(person)) {
+  			if (coinhit) {
+	  			score = score + 50;
+	  			coinhit = false;
+	  		}
   		}
 	}
 
